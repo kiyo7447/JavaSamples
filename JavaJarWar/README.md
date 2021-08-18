@@ -13,5 +13,12 @@ java -jar sample.jar
 javac -sourcepath src -classpath lib\* -d WebContent\WEB-INF\classes src\sample\SampleServlet.java
 ## Step 2 Warファイルの作成
 jar cvf sample.war -C WebContent .
+# Docker対応
+## Step 1 warファイルを作成
+jar cvf docker/sample.war -C WebContent .
+## Step 2 Dockerビルド
+docker build -t my-javaapp .
+## Step 3 Dockerを起動
+docker run --rm -p 8080:8080 my-javaapp
 
-
+・・・ここで一旦諦める。server.xmlをテキストエディッタで開発するのは限界。。
